@@ -1,4 +1,40 @@
 {
+  "header": {
+    "title": "Artifacter",
+    "home": "ホーム",
+    "features": "特徴",
+    "latest-builds": "最新のビルド"
+  },
+  "home-page": {
+    "title": "Artifacter",
+    "description": "あなたの原神キャラクターの美しいビルドカードを作成しよう",
+    "generate-build-cards": "ビルドカードを作成",
+    "latest-builds": "最新のビルド",
+    "features": {
+      "title": "特徴",
+      "beautiful-cards": {
+        "title": "美しいカード",
+        "description": "あなたのキャラクタービルドを魅力的に見せるビルドカードを作成"
+      },
+      "real-time-data": {
+        "title": "リアルタイムデータ",
+        "description": "Enka.Network API を利用してゲーム内のキャラクターデータと同期"
+      },
+      "easy-sharing": {
+        "title": "簡単に共有",
+        "description": "シンプルなリンクや画像のダウンロードで簡単にビルドを共有"
+      }
+    }
+  },
+  "footer": {
+    "credits": "クレジット",
+    "enka-network-api": "Enka.Network API",
+    "original-repository": "オリジナルリポジトリ（paimon.plus）",
+    "artifacter-repository": "Artifacter リポジトリ",
+    "attribution": "帰属表示",
+    "disclaimer": "Genshin Impact™ は COGNOSPHERE PTE. LTD. の登録商標です。本プロジェクトは miHoYo/COGNOSPHERE とは一切関係がなく、承認も受けていません。",
+    "made-with-love": "原神コミュニティのために、愛を込めて制作しました。"
+  },
   "artifacter": {
     "card": {
       "total": "総合スコア",

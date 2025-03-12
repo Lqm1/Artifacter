@@ -1,5 +1,5 @@
 {
-    "codeium.detectProxy": true,
+    "biome.enabled": false,
     "[typescript]": {
         "editor.tabSize": 2,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
