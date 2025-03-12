@@ -58,6 +58,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <div
+        id="home"
         className="relative min-h-screen flex items-center justify-center"
         style={{
           backgroundImage:
@@ -97,7 +98,7 @@ export default function Home() {
       </div>
 
       {/* Latest Builds Section */}
-      <section id="latest" className="py-20">
+      <section id="latest-builds" className="py-20">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-white mb-12">
             {t("latest-builds")}

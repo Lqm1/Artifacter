@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import { Menu, X, GithubIcon, Home, Star, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 
 export function Header() {
+  const pathname = usePathname();
   const t = useTranslations("header");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,17 +33,30 @@ export function Header() {
     };
   }, [isMenuOpen]);
 
-  const menuItems = [
-    { href: "/", icon: Home, label: t("home") },
-    { href: "#features", icon: Star, label: t("features") },
-    { href: "#latest", icon: Share2, label: t("latest-builds") },
-    {
-      href: "https://github.com/Lqm1/Artifacter",
-      icon: GithubIcon,
-      label: "GitHub",
-      isExternal: true,
-    },
-  ];
+  const menuItems =
+    pathname === "/"
+      ? [
+          { href: "#home", icon: Home, label: t("home") },
+          { href: "#features", icon: Star, label: t("features") },
+          { href: "#latest-builds", icon: Share2, label: t("latest-builds") },
+          {
+            href: "https://github.com/Lqm1/Artifacter",
+            icon: GithubIcon,
+            label: "GitHub",
+            isExternal: true,
+          },
+        ]
+      : [
+          { href: "/#home", icon: Home, label: t("home") },
+          { href: "/#features", icon: Star, label: t("features") },
+          { href: "/#latest-builds", icon: Share2, label: t("latest-builds") },
+          {
+            href: "https://github.com/Lqm1/Artifacter",
+            icon: GithubIcon,
+            label: "GitHub",
+            isExternal: true,
+          },
+        ];
 
   return (
     <header

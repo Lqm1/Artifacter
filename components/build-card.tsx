@@ -63,18 +63,22 @@ export default function BuildCard({ avatarInfo, scoreType }: BuildCardProps) {
   const t = useTranslations();
   const genshinT = useTranslations("genshin");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const xCanvasRef = useRef<XCanvas>(null);
   const a = useMemo(() => avatarRemap(avatarInfo), [avatarInfo]);
   useEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
-    const xc = new XCanvas(canvas, "/workers", {
-      canvasWidth: 1920,
-      canvasHeight: 1080,
-      fontFace: ["GenshinJa", "/fonts/genshin-ja.woff2"],
-      fontSize: 24,
-      fontColor: "#fff",
-      //debugMode: true,
-    });
+    const xc =
+      xCanvasRef.current ??
+      new XCanvas(canvas, "/workers", {
+        canvasWidth: 1920,
+        canvasHeight: 1080,
+        fontFace: ["GenshinJa", "/fonts/genshin-ja.woff2"],
+        fontSize: 24,
+        fontColor: "#fff",
+        //debugMode: true,
+      });
+    xCanvasRef.current = xc;
     const weapon: WeaponRemap[] = [];
     const artifactList: ReliquaryRemap[] = [];
     for (const e of a.equipList || []) {
