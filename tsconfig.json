@@ -1,16 +1,27 @@
 {
-  "include": ["src/**/*"],
-  "exclude": ["functions/**/*"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "@manual/*": ["src/.manual-update/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@game/*": ["src/game/*"],
-      "@i18n/*": ["src/i18n/*"],
-      "@layout": ["src/layout/index.astro"]
+      "@/*": ["./*"]
     }
   },
-  "extends": "astro/tsconfigs/strict"
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
