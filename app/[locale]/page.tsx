@@ -1,5 +1,5 @@
 import BuildCard from "@/components/build-card";
-import { fetchUid } from "@/libs/enka-network";
+import { fetchUid } from "@/lib/enka-network";
 import { notFound } from "next/navigation";
 
 export default async function HomePage() {

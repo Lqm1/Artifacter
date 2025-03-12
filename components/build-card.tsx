@@ -7,7 +7,7 @@ import type {
 } from "@/types/enka-network";
 import { useEffect, useMemo, useRef } from "react";
 import { XCanvas, div, img } from "@luisfun/x-canvas";
-import { avatarRemap } from "@/libs/enka-network";
+import { avatarRemap } from "@/lib/enka-network";
 import {
   bga,
   bga2,
