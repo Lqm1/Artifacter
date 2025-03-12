@@ -7,7 +7,7 @@ import type {
 } from "@/types/enka-network";
 import { useEffect, useMemo, useRef } from "react";
 import { XCanvas, div, img } from "@luisfun/x-canvas";
-import { avatarRemap } from "@/lib/enka-network";
+import { avatarRemap, convertNameTextMapHash } from "@/lib/enka-network";
 import {
   bga,
   bga2,
@@ -20,29 +20,7 @@ import {
   sxBga,
   sxMiniPaper,
 } from "@/utils/build-card";
-import avatar from "@/genshin/avatar.json";
-import material from "@/genshin/material.json";
-import weapon from "@/genshin/weapon.json";
 import { useTranslations } from "next-intl";
-
-const convertNameTextMapHash = (
-  id: number,
-  type?: "avatar" | "weapon" | "material"
-) => {
-  let nameTextMapHash = 0;
-  switch (type) {
-    case "avatar":
-      nameTextMapHash = avatar.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-    case "weapon":
-      nameTextMapHash = weapon.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-    case "material":
-      nameTextMapHash = material.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-  }
-  return nameTextMapHash;
-};
 
 export const scoreTypeMenuItems = [
   "CRIT",

@@ -14,6 +14,9 @@ import {
 import ky from "ky";
 import avatarJson from "@/genshin/avatar.json";
 import reliquaryAffixJson from "@/genshin/reliquary-affix.json";
+import avatar from "@/genshin/avatar.json";
+import weapon from "@/genshin/weapon.json";
+import material from "@/genshin/material.json";
 
 export type AvatarRemapped = ReturnType<typeof avatarRemap>;
 
@@ -323,4 +326,23 @@ const get_reliquary_roll_set = (idList: number[] | undefined) => {
     prop: e.prop,
     rolls: e.rolls.sort((a, b) => a.rank - b.rank),
   }));
+};
+
+export const convertNameTextMapHash = (
+  id: number,
+  type?: "avatar" | "weapon" | "material"
+) => {
+  let nameTextMapHash = 0;
+  switch (type) {
+    case "avatar":
+      nameTextMapHash = avatar.find((e) => e.id === id)?.nameTextMapHash || 0;
+      break;
+    case "weapon":
+      nameTextMapHash = weapon.find((e) => e.id === id)?.nameTextMapHash || 0;
+      break;
+    case "material":
+      nameTextMapHash = material.find((e) => e.id === id)?.nameTextMapHash || 0;
+      break;
+  }
+  return nameTextMapHash;
 };

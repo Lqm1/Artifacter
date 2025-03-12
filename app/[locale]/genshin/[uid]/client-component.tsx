@@ -4,32 +4,10 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useTranslations } from "next-intl";
 import BuildCard from "@/components/build-card";
-import { avatarRemap } from "@/lib/enka-network";
-import avatar from "@/genshin/avatar.json";
-import material from "@/genshin/material.json";
-import weapon from "@/genshin/weapon.json";
+import { avatarRemap, convertNameTextMapHash } from "@/lib/enka-network";
 import { EnkaApi } from "@/types/enka-network";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-
-const convertNameTextMapHash = (
-  id: number,
-  type?: "avatar" | "weapon" | "material"
-) => {
-  let nameTextMapHash = 0;
-  switch (type) {
-    case "avatar":
-      nameTextMapHash = avatar.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-    case "weapon":
-      nameTextMapHash = weapon.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-    case "material":
-      nameTextMapHash = material.find((e) => e.id === id)?.nameTextMapHash || 0;
-      break;
-  }
-  return nameTextMapHash;
-};
 
 export default function GenshinDashboard({ enkaData }: { enkaData: EnkaApi }) {
   const genshinT = useTranslations("genshin");
