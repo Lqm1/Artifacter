@@ -12,6 +12,7 @@
   "home-page": {
     "title": "Artifacter",
     "description": "あなたの原神キャラクターの美しいビルドカードを作成しよう",
+    "enter-your-uid": "UID を入力してください",
     "generate-build-cards": "ビルドカードを作成",
     "latest-builds": "最新のビルド",
     "features": {

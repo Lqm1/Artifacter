@@ -78,7 +78,7 @@ export default function Home() {
           >
             <Input
               type="text"
-              placeholder="Enter your UID"
+              placeholder={t("enter-your-uid")}
               value={uid}
               onChange={(e) => setUid(e.target.value)}
               className="max-w-xs text-center text-lg bg-white/10 border-white/20 text-white placeholder:text-gray-300 transition-all duration-300 focus:scale-105"
