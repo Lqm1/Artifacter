@@ -17,6 +17,8 @@ import reliquaryAffixJson from "@/genshin/reliquary-affix.json";
 import avatar from "@/genshin/avatar.json";
 import weapon from "@/genshin/weapon.json";
 import material from "@/genshin/material.json";
+import ProfilePictureExcelConfigData from "@/genshin/.data/ProfilePictureExcelConfigData.json";
+import RoleCombatDifficultyExcelConfigData from "@/genshin/.data/RoleCombatDifficultyExcelConfigData.json";
 
 export type AvatarRemapped = ReturnType<typeof avatarRemap>;
 
@@ -345,4 +347,50 @@ export const convertNameTextMapHash = (
       break;
   }
   return nameTextMapHash;
+};
+
+export const getProfilePicturePathById = (id: number) => {
+  const profilePicture = ProfilePictureExcelConfigData.find(
+    (profilePicture) => profilePicture.id === id
+  );
+  if (!profilePicture) {
+    throw new Error(`Profile picture with id ${id} not found`);
+  }
+  return profilePicture.iconPath;
+};
+
+export const getProfilePicturePathByAvatarId = (avatarId: number) => {
+  const profilePicture = ProfilePictureExcelConfigData.find(
+    (profilePicture) => profilePicture.unlockParam === avatarId
+  );
+  if (!profilePicture) {
+    throw new Error(`Profile picture with avatar id ${avatarId} not found`);
+  }
+  return profilePicture.iconPath;
+};
+
+export const getProfilePicturePath = (
+  profilePicture: EnkaApi["playerInfo"]["profilePicture"]
+) => {
+  if (profilePicture.id) {
+    return getProfilePicturePathById(profilePicture.id);
+  } else if (profilePicture.avatarId) {
+    return getProfilePicturePathByAvatarId(profilePicture.avatarId);
+  }
+};
+
+export const theaterDifficulties = [
+  "EASY",
+  "NORMAL",
+  "HARD",
+  "VISIONARY",
+] as const;
+
+export const getTheaterDifficulty = (difficultyId: number) => {
+  const roleCombatDifficulty = RoleCombatDifficultyExcelConfigData.find(
+    (roleCombatDifficulty) => roleCombatDifficulty.difficultyId === difficultyId
+  );
+  if (roleCombatDifficulty) {
+    return theaterDifficulties[roleCombatDifficulty.difficultyLevel - 1];
+  }
 };

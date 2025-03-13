@@ -1,5 +1,6 @@
 "use client";
 
+import NextImage from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Star, Share2, Users } from "lucide-react";
@@ -35,20 +36,17 @@ export default function Home() {
     {
       title: "Furina Build",
       description: "Hydro Support Build with HP Focus",
-      image:
-        "https://images.unsplash.com/photo-1704118095891-92e7739fcaa9?q=80&w=500&auto=format&fit=crop",
+      image: "/images/build-card-assets/overlay.jpg",
     },
     {
       title: "Navia Build",
       description: "Geo DPS with Critical Focus",
-      image:
-        "https://images.unsplash.com/photo-1704118095891-92e7739fcaa9?q=80&w=500&auto=format&fit=crop",
+      image: "/images/build-card-assets/overlay.jpg",
     },
     {
       title: "Xianyun Build",
       description: "Anemo Support Build",
-      image:
-        "https://images.unsplash.com/photo-1704118095891-92e7739fcaa9?q=80&w=500&auto=format&fit=crop",
+      image: "/images/build-card-assets/overlay.jpg",
     },
   ];
 
@@ -107,14 +105,16 @@ export default function Home() {
             {latestBuilds.map((build, index) => (
               <Card
                 key={index}
-                className="bg-gray-800/50 border-gray-700 overflow-hidden group"
+                className="bg-gray-800/50 border-gray-700 overflow-hidden group py-0"
               >
-                <CardContent className="p-0">
+                <CardContent className="px-0">
                   <div className="relative aspect-video">
-                    <img
+                    <NextImage
                       src={build.image}
                       alt={build.title}
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      width={1920}
+                      height={1080}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
                   </div>

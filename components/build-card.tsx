@@ -5,7 +5,13 @@ import type {
   ReliquaryRemap,
   WeaponRemap,
 } from "@/types/enka-network";
-import { useEffect, useMemo, useRef } from "react";
+import {
+  type CanvasHTMLAttributes,
+  type DetailedHTMLProps,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { XCanvas, div, img } from "@luisfun/x-canvas";
 import { avatarRemap, convertNameTextMapHash } from "@/lib/enka-network";
 import {
@@ -16,28 +22,27 @@ import {
   getScoreSet,
   getTotalScoreSet,
   lightGreen,
+  ScoreType,
   src,
   sxBga,
   sxMiniPaper,
 } from "@/utils/build-card";
 import { useTranslations } from "next-intl";
 
-export const scoreTypeMenuItems = [
-  "CRIT",
-  "HP",
-  "ATK",
-  "DEF",
-  "EM",
-  "ER",
-] as const;
-export type ScoreType = (typeof scoreTypeMenuItems)[number];
-
 interface BuildCardProps {
   avatarInfo: AvatarInfo;
   scoreType: ScoreType;
 }
 
-export default function BuildCard({ avatarInfo, scoreType }: BuildCardProps) {
+export default function BuildCard({
+  avatarInfo,
+  scoreType,
+  ...props
+}: BuildCardProps &
+  DetailedHTMLProps<
+    CanvasHTMLAttributes<HTMLCanvasElement>,
+    HTMLCanvasElement
+  >) {
   const t = useTranslations();
   const genshinT = useTranslations("genshin");
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -546,7 +551,5 @@ export default function BuildCard({ avatarInfo, scoreType }: BuildCardProps) {
       )
     );
   });
-  return (
-    <canvas ref={canvasRef} width={1920} height={1080} className="w-full" />
-  );
+  return <canvas ref={canvasRef} {...props} />;
 }

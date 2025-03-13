@@ -30,9 +30,7 @@ export const src = (
   type?: "webp" | "png" | "jpg"
 ) => {
   if (folder === "ui")
-    return `https://res.cloudinary.com/genshin/image/upload/sprites/${name}.${
-      type ? type : "webp"
-    }`;
+    return `https://enka.network/ui/${name}.${type ? type : "png"}`;
   return `/images${folder ? `/${folder}` : ""}/${name ? name : "Empty"}.${
     type ? type : "webp"
   }`;

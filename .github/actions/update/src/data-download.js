@@ -41,6 +41,8 @@ const gitlabFileName = [
   "RewardExcelConfigData", // Rewards Data for Friendship Cards
 
   "ProfilePictureExcelConfigData", // User pfp
+
+  "RoleCombatDifficultyExcelConfigData", // Theater mode
 ];
 
 export const dataDownload = async () => {

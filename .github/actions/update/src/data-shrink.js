@@ -93,6 +93,12 @@ const ProfilePicture = JSON.parse(
   fs.readFileSync(`${folder.data}ProfilePictureExcelConfigData.json`, "utf8")
 );
 
+// manual text
+// import ManualTextMap from "../../../../genshin/.data/ManualTextMapConfigData.json";
+const ManualTextMap = JSON.parse(
+  fs.readFileSync(`${folder.data}ManualTextMapConfigData.json`, "utf8")
+);
+
 const E = {
   Avatar,
   AvatarSkillDepot,
@@ -373,7 +379,9 @@ const dumpProfilePicture = () => {
 };
 
 const dumpTextMap = () => {
-  let hashs = readFile("avatar").map((e) => e.nameTextMapHash);
+  let hashs = [];
+  hashs.push(...ManualTextMap.map((e) => e.textMapContentTextMapHash));
+  hashs.push(...readFile("avatar").map((e) => e.nameTextMapHash));
   hashs.push(...readFile("weapon").map((e) => e.nameTextMapHash));
   hashs.push(...readFile("material").map((e) => e.nameTextMapHash));
   hashs.push(...readFile("reliquary-set").map((e) => e.nameTextMapHash));
