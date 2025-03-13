@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, GithubIcon, Home, Star, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 
 export function Header() {
   const pathname = usePathname();
