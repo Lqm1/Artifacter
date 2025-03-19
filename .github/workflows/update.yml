@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-      - run: cd .github/actions/update && npm ci
+      - run: cd .github/actions/update && npm ci --force
       # アクションの実行
       - name: Run actions/update
         uses: ./.github/actions/update
